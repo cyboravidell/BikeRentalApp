@@ -1,5 +1,6 @@
 package com.bike.on.rent.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  // It is used for setting the auto-inc value for a column
 	private Long userId;
 	private String name;
+	@Column(nullable = false, unique = true)
 	private String email;
 	private String phoneNo;
 	private String password;
@@ -78,6 +80,12 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", phoneNo=" + phoneNo + ", password="
+				+ password + ", role=" + role + "]";
 	}
 
 
